@@ -3,13 +3,17 @@ const {
     Attachment
 } = require('discord.js');
 
+const {
+    token
+} = require('./crap/dumb_token.json')
+
+const {
+    chiD 
+} = require('./crap/dum_channel_id.json')
+
 const ytdl = require("ytdl-core");
 
 const client = new Client();
-
-const token = 'NzIzOTU5NTYxMTEwOTQ1OTAy.Xu5RnQ.UBKIBPzvULftv-AfX84ldEn7ips';
-
-const commandsChannelID = '727016656718659604'; //ID do canal de comandos
 
 const PREFIX = '!';
 
@@ -27,7 +31,7 @@ client.on('message', async message => {
         servers[message.guild.id] = {queue: []};
     }
 
-    if(message.channel.id != commandsChannelID) return;
+    if(message.channel.id != chiD) return;
 
 
     switch(args[0]){
@@ -90,7 +94,7 @@ client.on('message', async message => {
                         console.log('Disconnected.');
                         server.playingMusic = false;
                         message.channel.send('Fila encerrada, desconectando...');
-                        connection.disconnect();
+                        connection.disconnectA();
                     }
                 });
             }
